@@ -7,8 +7,18 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/id_textViewCredit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="149dp"
+        android:layout_marginTop="637dp"
+        android:layout_marginEnd="155dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:text="Calculator App\nKushaal Latupalli\nBlock 3A" />
 </RelativeLayout>
