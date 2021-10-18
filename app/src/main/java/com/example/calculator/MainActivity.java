@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Button bD;
     Button bE;
     Button bC;
-    TextView ans;
+    TextView dP;
+    String ans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         bD = findViewById(R.id.buttonMulti);
         bE = findViewById(R.id.buttonEquals);
         bC = findViewById(R.id.buttonClear);
-        ans = (TextView)findViewById(R.id.textViewAns);
+        dP = (TextView)findViewById(R.id.textViewDP);
 
 
 
@@ -57,10 +58,41 @@ public class MainActivity extends AppCompatActivity {
         switch(v.getId())
         {
             case R.id.button0:
-                ans+="1";
+                work("0");
+                break;
+            case R.id.button1:
+                work("1");
+                break;
+            case R.id.button2:
+                work("2");
+                break;
+            case R.id.button3:
+                work("3");
+                break;
+            case R.id.button4:
+                work("4");
+                break;
+            case R.id.button5:
+                work("5");
+                break;
+            case R.id.button6:
+                work("6");
+                break;
+            case R.id.button7:
+                work("7");
+                break;
+            case R.id.button8:
+                work("8");
                 break;
 
+
         }
+    }
+    public void work(String s)
+    {
+        ans = dP.getText().toString();
+        ans += s;
+        dP.setText(ans);
     }
 }
 
