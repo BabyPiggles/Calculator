@@ -61,46 +61,46 @@ public class MainActivity extends AppCompatActivity {
         switch(v.getId())
         {
             case R.id.button0:
-                work(" 0");
+                work("0");
                 break;
             case R.id.button1:
-                work(" 1");
+                work("1");
                 break;
             case R.id.button2:
-                work(" 2");
+                work("2");
                 break;
             case R.id.button3:
-                work(" 3");
+                work("3");
                 break;
             case R.id.button4:
-                work(" 4");
+                work("4");
                 break;
             case R.id.button5:
-                work(" 5");
+                work("5");
                 break;
             case R.id.button6:
-                work(" 6");
+                work("6");
                 break;
             case R.id.button7:
-                work(" 7");
+                work("7");
                 break;
             case R.id.button8:
-                work(" 8");
+                work("8");
                 break;
             case R.id.button9:
-                work(" 9");
+                work("9");
                 break;
             case R.id.buttonPlus:
-                work(" +");
+                work(" + ");
                 break;
             case R.id.buttonMinius:
-                work(" -");
+                work(" - ");
                 break;
             case R.id.buttonMulti:
-                work(" *");
+                work(" * ");
                 break;
             case R.id.buttonDiv:
-                work(" /");
+                work(" / ");
                 break;
             case R.id.buttonEquals:
                 calculations();
@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void work(String s)
     {
+
         if(dP.getText().toString().equals("0"))
         {
             ans = dP.getText().toString();
@@ -129,15 +130,107 @@ public class MainActivity extends AppCompatActivity {
     }
     public void calculations()
     {
-        ans = dP.getText().toString();
-        StringTokenizer st = new StringTokenizer(ans," ");
-        ArrayList<String> calc = new ArrayList<String>();
-        do
+        try
         {
-            calc.add(st.nextToken());
-        }while(st.hasMoreTokens()==true);
-        
+            ans = dP.getText().toString();
+            StringTokenizer st = new StringTokenizer(ans," ");
+            ArrayList<String> calc = new ArrayList<String>();
+            int x = 0;
+            System.out.println("Original:");
+            do
+            {
+                calc.add(st.nextToken());
+                System.out.print(calc.get(x)+", ");
+                x++;
+            }while(st.hasMoreTokens()==true);
+            System.out.println();
+            while(calc.contains("*")||calc.contains("/")||calc.contains("+")||calc.contains("-"))
+            {
+                System.out.println("Pass1");
+                if(calc.contains("*")||calc.contains("/"))
+                {
+                    System.out.println("Pass2");
+                    int mD = 0;
+                    while(calc.contains("*")||calc.contains("/"))
+                    {
+                        System.out.println("Pass3 ");
+                        if(calc.get(mD).equals("*")||calc.get(mD).equals("/"))
+                        {
+                            System.out.println("Pass4MD "+mD);
+                            double a1 = Double.valueOf(calc.get(mD-1));
+                            double a2 = Double.valueOf(calc.get(mD+1));
+                            double aT = 0.0;
+                            if(calc.get(mD).equals("*"))
+                            {
+                                System.out.println("M"+ mD);
+                                aT = a1*a2;
+                            }
+                            else
+                            {
+                                System.out.println("D "+ mD);
+                                aT = a1/a2;
+                            }
+                            String a = Double.toString(aT);
+                            System.out.println("hilol "+mD);
+                            calc.set(mD-1,a);
+                            calc.remove(mD+1);
+                            calc.remove(mD);
+                            ans = calc.get(0);
+                            System.out.println("\nFinish Multiply and Divide");
 
+
+                        }
+                        mD++;
+
+                    }
+
+                }
+                else if(calc.contains("+")||calc.contains("-"))
+                {
+                    System.out.println("Entering Add or Sub");
+                    int aS = 0;
+                    while(calc.contains("+")||calc.contains("-"))
+                    {
+                        System.out.println("Pass3AS");
+                        if(calc.get(aS).equals("+")||calc.get(aS).equals("-"))
+                        {
+                            System.out.println("Pass4AS "+ aS);
+                            double a1 = Double.valueOf(calc.get(aS-1));
+                            double a2 = Double.valueOf(calc.get(aS+1));
+                            double aT = 0;
+                            if(calc.get(aS).equals("+"))
+                            {
+                                aT = a1+a2;
+                            }
+                            else
+                            {
+                                aT = a1-a2;
+                            }
+                            String a = Double.toString(aT);
+                            calc.set(aS-1,a);
+                            calc.remove(aS+1);
+                            calc.remove(aS);
+                            aS = 0;
+                            System.out.println("+ or -");
+                            ans = calc.get(0);
+                            System.out.println();
+                        }
+                        aS++;
+
+                    }
+                }
+            }
+            System.out.println("\nFinal "+ans);
+            if(ans.equalsIgnoreCase("Infinity"))
+            {
+                ans = "Error";
+            }
+            dP.setText(ans);
+        }catch(Exception e)
+        {
+
+            dP.setText("Error");
+        }
     }
 }
 
