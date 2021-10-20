@@ -18,6 +18,7 @@
             android:layout_height="100dp"
             android:text="0"
             android:gravity="right"
+            android:autoSizeTextType="uniform"
             android:textSize="80dp" />
     </LinearLayout>
 

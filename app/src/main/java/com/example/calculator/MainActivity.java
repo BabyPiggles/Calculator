@@ -91,16 +91,16 @@ public class MainActivity extends AppCompatActivity {
                 work("9");
                 break;
             case R.id.buttonPlus:
-                work(" + ");
+                work2(" + ");
                 break;
             case R.id.buttonMinius:
-                work(" - ");
+                work2(" - ");
                 break;
             case R.id.buttonMulti:
-                work(" * ");
+                work2(" * ");
                 break;
             case R.id.buttonDiv:
-                work(" / ");
+                work2(" / ");
                 break;
             case R.id.buttonEquals:
                 calculations();
@@ -113,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void work(String s)
     {
-
         if(dP.getText().toString().equals("0"))
         {
             ans = dP.getText().toString();
@@ -127,6 +126,12 @@ public class MainActivity extends AppCompatActivity {
             dP.setText(ans);
         }
 
+    }
+    public void work2(String s)
+    {
+        ans = dP.getText().toString();
+        ans += s;
+        dP.setText(ans);
     }
     public void calculations()
     {
